@@ -38,6 +38,13 @@ def announcement_view(request):
 def announcement_create(request):
     return render(request, 'movein/announcement_create.html')
 
+def l_bills(request):
+    context = {
+        'active_link': 'bills',
+    }
+
+    return render(request, 'movein/l_bills.html', context)
+
 
 # Tenant Views
 def t_myRoom(request):

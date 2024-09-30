@@ -1,0 +1,89 @@
+{% extends 'base/template.html'%}
+{% load static %}
+
+{% block title %}Bills{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'styles/navstyle.css' %}">
+<link rel="stylesheet" href="{% static 'styles/billstyle.css' %}">
+
+{% endblock %}
+
+{% block content %}
+<!--Banner-->
+<section class="main-container">
+    <article class="banner">
+        <div class="container-fluid">
+            <div class="container text-light p-5">
+                <h1 class="display-4">Bills</h1>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold" aria-current="page" href="#"
+                            style="color: #F8E71C;"><i>Collected</i></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: #7E7979"><i>To Be Collected</i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </article>
+</section>
+<!--end of banner-->
+
+<!--content-->
+<div class="content">
+    <p class="totalBillsCollectedText">TOTAL BILLS COLLECTED:</p>
+    <h1 class="amountCollected">Php 69,420.00</h1>
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse1"
+                    aria-expanded="false" aria-controls="collapse1">
+                    <strong>Room # 1</strong>
+                </button>
+            </h2>
+            <div id="collapse1" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="float-start">Tenant Name: Almond Turiano</div><br>
+                    <div class="float-start">Amount: Php 42,000.00</div><br>
+                    <div class="float-end">Date: September 11, 2001</div>
+                </div>
+            </div>
+        </div>
+        <!-- item -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse2"
+                    aria-expanded="false" aria-controls="collapse2">
+                    <strong>Room # 2</strong>
+                </button>
+            </h2>
+            <div id="collapse2" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="float-start">Tenant Name: LeBron James</div><br>
+                    <div class="float-start">Amount: Php 13,710.00</div><br>
+                    <div class="float-end">Date: September 11, 2011</div>
+                </div>
+            </div>
+        </div>
+        <!-- item -->
+        <div class="accordion-item">
+            <h2 class="accordion-header">
+                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse3"
+                    aria-expanded="false" aria-controls="collapse3">
+                    <strong>Room # 3</strong>
+                </button>
+            </h2>
+            <div id="collapse3" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                <div class="accordion-body">
+                    <div class="float-start">Tenant Name: Jermaine Cole</div><br>
+                    <div class="float-start">Amount: Php 13,710.00</div><br>
+                    <div class="float-end">Date: September 11, 2021</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--end of content-->
+{% endblock %}
