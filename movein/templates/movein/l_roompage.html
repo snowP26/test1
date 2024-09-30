@@ -1,0 +1,52 @@
+{% extends 'base/template.html'%}
+{% load static %}
+
+{% block title %}Rooms{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/navstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/roomstyle.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!--Banner-->
+    <section class="main-container">
+        <article class="banner">
+            <div class="container-fluid">
+                <div class="container text-light p-5">
+                    <h1 class="display-4">Rooms</h1>
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a class="nav-link active fw-bold" aria-current="page" href="#"
+                                style="color: #F8E71C;">All</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="color: #7E7979">Vacant</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#" style="color: #7E7979">Occupied</a>
+                        </li>
+                    </ul>
+                    <a href="#" class="btn btn-primary">Add a Room</a>
+                </div>
+            </div>
+        </article>
+    </section>
+    <!--end of banner-->
+
+    <!--content-->
+    <div class="content">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-2 mb-3 d-flex justify-content-center">
+                <div class="room-container p-3 text-light">
+                    <h1 class="display-5">Room 1</h1>
+                    <p>G. Mariano</p>
+                </div>
+            </div>
+            <div class="col-12 col-md-8 image-container">
+                <img src="{% static 'images/bedroom-1.png' %}" class="img-fluid" alt="sample">
+            </div>
+        </div>
+    </div>
+    <!--end of content-->
+{% endblock %}

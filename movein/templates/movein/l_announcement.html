@@ -1,0 +1,63 @@
+    {% extends 'base/template.html'%}
+    {% load static %}
+
+    {% block title %}
+        Announcement
+    {% endblock %}
+
+    {% block styles %}
+        <link rel="stylesheet" href="{% static 'styles/navstyle.css' %}">
+        <link rel="stylesheet" href="{% static 'styles/l_announcestyle.css' %}">
+    {% endblock %}
+
+    {% block content %}
+
+        <!--Banner-->
+        <section class="main-container">
+            <article class="banner">
+                <div class="container-fluid">
+                    <div class="container text-light p-5">
+                        <h1 class="display-4">Announcements</h1>
+                        <form action="{% url 'createAnnouncement' %}">
+                            <button type="submit" class="btn btn-primary">Create Announcement</button>
+                        </form>
+                    </div>
+                </div>
+            </article>
+        </section>
+        <!--end of banner-->
+
+
+        <!--content-->
+        <div class="content">
+        {% for announcement in announcements %}
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header">
+                    <button class="accordion-button" type="button" 
+                            data-bs-toggle="collapse" 
+                            data-bs-target="#collapse{{ forloop.counter }}" 
+                            aria-expanded="false" 
+                            aria-controls="collapse{{ forloop.counter }}">
+                        <strong>{{ announcement.Announce_header }}</strong>     
+                    </button>
+                </h2>
+                <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        {{ announcement.Announce_body }}
+                        {% if announcement.Announce_image %}
+                        <div class="a_image">
+                            <img src="{{ announcement.Announce_image.url }}" alt="{{ announcement.Announce_header }}" >
+                        </div>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+        </div>
+            {% empty %}
+                <div class="alert alert-info">No announcements available.</div>
+            {% endfor %}
+        
+        <!--end of content-->
+    </div>  
+    {% endblock %}

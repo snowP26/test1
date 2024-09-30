@@ -1,0 +1,58 @@
+{% extends 'base/template.html'%}
+{% load static %}
+
+{% block title %}
+    Rooms
+{% endblock %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'styles/navstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/roomstyle.css' %}">
+    <link rel="stylesheet" href="{% static 'styles/myRoomStyle.css' %}">
+{% endblock %}
+
+{% block content %}
+    <!--Banner-->
+    <section class="main-container">
+        <article class="banner">
+            <div class="container-fluid">
+                <div class="container text-light p-5">
+                    <h1 class="display-4">My Room</h1>
+                    <a href="#" class="btn btn-primary">Contact Landlord</a>
+                </div>
+            </div>
+        </article>
+    </section>
+    <!--end of banner-->
+
+    <!--content-->
+    <div class="content">
+        <div class="content container mt-5">
+            <div class="row">
+                <!-- Image Container -->
+                <div class="col-md-6 mb-4">
+                    <div class="image-box">
+                        <!-- Update the image source using Django's static tag -->
+                        <img src="{% static 'images/bedroom-1.png' %}" alt="Room Image" class="img-fluid rounded shadow">
+                    </div>
+                </div>
+        
+                <!-- Room Details Container -->
+                <div class="col-md-6">
+                    <div class="room-details p-4">
+                        <h2>Room 1</h2>
+                        <p><strong>Occupied by:</strong> Gavril Mariano</p>
+                        <p><strong>Room Details:</strong></p>
+                        <ul>
+                            <li>38 sqm</li>
+                            <li>Newly-renovated</li>
+                            <li>Semi-furnished</li>
+                            <li>Includes brand new air conditioner & water heater</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end of content-->
+{% endblock %}
