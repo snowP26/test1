@@ -7,7 +7,7 @@ Announcement
 
 {% block styles %}
 <link rel="stylesheet" href="{% static 'styles/navstyle.css' %}">
-<link rel="stylesheet" href="{% static 'styles/l_announcestyle.css' %}">
+<link rel="stylesheet" href="{% static 'styles/t_announcestyle.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -18,9 +18,6 @@ Announcement
         <div class="container-fluid">
             <div class="container text-light p-5">
                 <h1 class="display-4">Announcements</h1>
-                <form action="{% url 'createAnnouncement' %}">
-                    <button type="submit" class="btn btn-primary">Create Announcement</button>
-                </form>
             </div>
         </div>
     </article>
@@ -49,19 +46,14 @@ Announcement
                         <img src="{{ announcement.Announce_image.url }}" alt="{{ announcement.Announce_header }}">
                     </div>
                     {% endif %}
-
-                    <div class="button-container">
-                        <button type="button" class="btn custom-edit me-2">Edit</button>
-                        <button type="button" class="btn custom-delete">Delete</button>
-                    </div>
                 </div>
+
             </div>
         </div>
         {% empty %}
         <div class="alert alert-info">No announcements available.</div>
         {% endfor %}
-    </div>
-</div>
-<!--end of content-->
 
-{% endblock %}
+        <!--end of content-->
+    </div>
+    {% endblock %}
