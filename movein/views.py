@@ -47,7 +47,7 @@ def l_bills(request):
 
 def l_reports(request):
     context = {
-        'active_link': 'rooms',
+        'active_link': 'reports',
     }
     return render(request, 'movein/l_reports.html', context)
 
@@ -62,7 +62,7 @@ def t_myRoom(request):
 
 def t_announcement(request):
     context = {
-        'active_link': 't_announcement',
+        'active_link': 'announcements',
     }
 
     return render(request, 'movein/t_announcement.html', context)
