@@ -1,0 +1,27 @@
+body{
+    background-color: #F7EDE1;
+}
+
+.content{
+    padding: 50px;  
+    padding-top: 30px;
+}
+
+.accordion-body{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 40px;
+    padding-top: 20px;
+    width: 1350px;
+    text-align: justify;
+}
+
+.a_image img {
+    max-width: 200px;
+    height: auto;
+}
+
+.accordion-body .a_image{
+    margin-left: 20px;
+}

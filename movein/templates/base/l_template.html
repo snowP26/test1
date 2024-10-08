@@ -40,7 +40,7 @@
                     <li class="nav-item">
                         <a class="nav-link p-3"
                             style="color: {% if active_link == 'rooms' %} #F8E71C {% else %} white {% endif %};"
-                            href="{% url 'tenant_room' %}">Rooms</a>
+                            href="{% url 'landlord_room' %}">Rooms</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link p-3"
@@ -55,7 +55,7 @@
                     <li class="nav-item">
                         <a class="nav-link p-3"
                             style="color: {% if active_link == 'reports' %} #F8E71C {% else %} white {% endif %};"
-                            href="#">Reports</a>
+                            href="{% url 'landlord_reports' %}">Reports</a>
                     </li>
                 </ul>
 

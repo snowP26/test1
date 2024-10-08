@@ -1,0 +1,26 @@
+body {
+    background-color: #F7EDE1;
+}
+
+.image-box img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Styles for room details container */
+.room-details {
+    background-color: #F7EDE1;
+    border-radius: 15px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.room-details h2 {
+    color: #5C1A1B;
+}
+
+.room-details ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}

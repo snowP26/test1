@@ -27,7 +27,7 @@ class Room(models.Model):
     Room_tenant = models.CharField(max_length=128, default='Tenant')
 
 
-class Reports(models.Model):
+class Reports(models.Model):    
     Reports_header = models.TextField()
     Reports_body = models.TextField()
     Reports_author = models.CharField(max_length=128)

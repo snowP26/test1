@@ -1,0 +1,36 @@
+hr {
+    padding: 0;
+    margin: 0.5px;
+    color: #F7EDE1;
+}
+
+.icon-lg {
+    width: 30px;
+    height: 30px;
+}
+
+
+.banner {
+    text-align: center;
+    background-color: #4e4187;
+    border-bottom-left-radius: 50px;
+    border-bottom-right-radius: 50px;
+    box-shadow: 5px 10px rgba(0, 0, 0, 0.112)
+}
+
+.display-4 {
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.nav-item {
+    margin-top: 0;
+}
+
+.btn {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-top: 15px;
+    border-radius: 15px;
+}
+

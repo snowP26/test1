@@ -17,7 +17,7 @@ def l_room(request):
     return render(request, 'movein/l_roompage.html', context)
 
 def l_announcement(request):
-    announcements = Announcements.objects.all()
+    announcements = Announcements.objects.order_by('-Announce_date')
     context = {
         'announcements': announcements,
         'active_link': 'announcements',
@@ -46,8 +46,10 @@ def l_bills(request):
     return render(request, 'movein/l_bills.html', context)
 
 def l_reports(request):
+    reports = Reports.objects.all() 
     context = {
         'active_link': 'reports',
+        'reports': reports
     }
     return render(request, 'movein/l_reports.html', context)
 
@@ -61,9 +63,10 @@ def t_myRoom(request):
     return render(request, 'movein/t_myRoom.html', context)
 
 def t_announcement(request):
+    announcements = Announcements.objects.order_by('-Announce_date')
     context = {
         'active_link': 'announcements',
+        'announcements': announcements, 
     }
 
     return render(request, 'movein/t_announcement.html', context)
-
