@@ -11,6 +11,7 @@ ipython = "*"
 dj-database-url = "*"
 psycopg2-binary = "*"
 whitenoise = "*"
+psycopg2 = "*"
 
 [dev-packages]
 

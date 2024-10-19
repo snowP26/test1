@@ -34,16 +34,6 @@ def l_announcement(request):
     }
     return render(request, 'movein/l_announcement.html', context)
 
-def announcement_view(request):
-    if request.method == "POST":
-        form = announcementForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            return redirect('landlord_announcement') 
-    else: 
-        form = announcementForm()
-
-    return render(request, 'movein/announcement_create.html', {'form': form} ) 
 
 
 def l_bills(request):
