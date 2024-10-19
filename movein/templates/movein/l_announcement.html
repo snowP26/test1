@@ -18,15 +18,49 @@ Announcement
         <div class="container-fluid">
             <div class="container text-light p-5">
                 <h1 class="display-4">Announcements</h1>
-                <form action="{% url 'createAnnouncement' %}">
-                    <button type="submit" class="btn btn-primary">Create Announcement</button>
-                </form>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    data-bs-whatever="@mdo">Create Announcement</button>
+
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content text-start" style="background-color: #F7EDE1;">
+                            <!-- Change the banner color -->
+                            <div class="modal-header"
+                                style="background-color: #4E4187; color: white; border-top-left-radius: 0.3rem; border-top-right-radius: 0.3rem;">
+                                <h1 class="modal-title fs-5" id="exampleModalLabel">Create Announcement</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body p-4">
+                                <form method="POST" enctype="multipart/form-data">
+                                    {% csrf_token %}
+                                    <div class="mb-3">
+                                        <label for="recipient-name" class="form-label"
+                                            style="color:black;">Header</label>
+                                        {{ form.Announce_header }}
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="message-text" class="form-label" style="color:black;">Body</label>
+                                        {{ form.Announce_body }}
+                                    </div>
+                                    <div class="modal-footer d-flex justify-content-end">
+                                        <button type="button" class="btn btn-secondary"
+                                            data-bs-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="btn btn-primary"
+                                            style="background-color: #4E4187; border-color: #4E4187;">Publish
+                                            Announcement</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </article>
 </section>
 <!--end of banner-->
-
 
 <!--content-->
 <div class="content">

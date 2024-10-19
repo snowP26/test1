@@ -18,9 +18,19 @@ def l_room(request):
 
 def l_announcement(request):
     announcements = Announcements.objects.order_by('-Announce_date')
+    
+    if request.method == "POST":
+        form = announcementForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect('landlord_announcement') 
+    else: 
+        form = announcementForm()
+    
     context = {
         'announcements': announcements,
         'active_link': 'announcements',
+        'form': form,
     }
     return render(request, 'movein/l_announcement.html', context)
 
@@ -35,8 +45,6 @@ def announcement_view(request):
 
     return render(request, 'movein/announcement_create.html', {'form': form} ) 
 
-def announcement_create(request):
-    return render(request, 'movein/announcement_create.html')
 
 def l_bills(request):
     context = {

@@ -24,5 +24,9 @@ class signupForm(forms.Form):
 class announcementForm(forms.ModelForm):
     class Meta:
         model = Announcements
-        fields = ['Announce_header', 'Announce_body', 'Announce_image']
+        fields = ['Announce_header', 'Announce_body']  # Adjust fields as needed
+        widgets = {
+            'Announce_header': forms.TextInput(attrs={'class': 'form-control w-75 form-control-lg'}),
+            'Announce_body': forms.Textarea(attrs={'class': 'form-control w-100', 'rows': 5}),  # 100% width and 5 rows
+        }
 
