@@ -68,3 +68,15 @@ def t_announcement(request):
     }
 
     return render(request, 'movein/t_announcement.html', context)
+
+def l_login(request):
+    return render(request, 'movein/l_loginpage.html')
+
+def t_login(request):
+    return render(request, 'movein/t_loginpage.html')
+
+def l_register(request):
+    return render(request, 'movein/l_registerpage.html')
+
+def t_register(request):
+    return render(request, 'movein/t_registerpage.html')
