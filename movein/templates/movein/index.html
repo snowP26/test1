@@ -33,8 +33,8 @@ the users can choose to log in or register for the website. -->
             </a>
 
             <div class="d-flex">
-                <button id="topButtons" type="button" class="btn custom-btn">Register</button>
-                <button id="topButtons" type="button" class="btn btn-primary">Log in</button>
+                <button id="topButtons" type="button" class="btn custom-btn" onclick="window.location.href='{% url 'landlord_register' %}'">Register</button>
+                <button id="topButtons" type="button" class="btn btn-primary" onclick="window.location.href='{% url 'landlord_login' %}'">Log in</button>
             </div>
         </div>
     </nav>

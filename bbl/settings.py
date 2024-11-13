@@ -17,7 +17,7 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DATABASE_URL = "postgresql://postgres:wysKBOtrqYNqYsTtQTIbDoRpIKOalDEc@autorack.proxy.rlwy.net:49736/railway"
+DATABASE_URL = "postgresql://postgres:YFesNEIRzoDKBUCVTEJaCbDpAULpIeRn@autorack.proxy.rlwy.net:34975/railway"
 
 
 
@@ -142,3 +142,5 @@ TIME_ZONE = 'Asia/Manila'
 USE_TZ = True
 
 LOGIN_REDIRECT_URL = 'myRoom'
+
+AUTH_USER_MODEL = 'movein.User'

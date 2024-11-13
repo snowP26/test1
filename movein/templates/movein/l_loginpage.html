@@ -17,6 +17,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'styles/l_loginstyle.css' %}">
+    <link rel="icon" href="{% static 'images/logo-purple.png' %}">
 
 </head>
 
@@ -30,18 +31,20 @@
                     <div class="semi-container">
                         <div class="input-box">
                             <h3>Move in</h3>
-                            <div class="form-floating mb-2">
-                                <input type="email" class="form-control-sm" id="floatingInput"
-                                    placeholder="Email Address">
-                            </div>
-                            <div class="form-floating mb-3">
-                                <input type="password" class="form-control-sm" id="floatingPassword"
-                                    placeholder="Password">
-                            </div>
-
-                            <button type="button" class="btn btn-primary">Log In</button>
+                            <form method="POST" action="{% url 'landlord_login' %}">
+                                {% csrf_token %}
+                                <div class="form-floating mb-2">
+                                    <input type="email" name="email" class="form-control-sm" id="floatingInput"
+                                        placeholder="Email Address" required>
+                                </div>
+                                <div class="form-floating mb-3">
+                                    <input type="password" name="password" class="form-control-sm" id="floatingPassword"
+                                        placeholder="Password" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Log In</button>
+                            </form>
                             <div class="row mt-1">
-                                <div class="col-5 ps-2">
+                                <div class="col-5 ps-2">    
                                     <hr>
                                 </div>
                                 <div class="col-2 p-0">
@@ -51,8 +54,10 @@
                                     <hr>
                                 </div>
                             </div>
-                            <button type="button" id="orBtns" class="btn btn-secondary mb-2">Sign up</button>
-                            <button type="button" id="orBtns" class="btn btn-secondary">Log in as Tenant</button>
+                            <button type="button" id="orBtns" class="btn btn-secondary mb-2"
+                                onclick="window.location.href='{% url 'landlord_register' %}'">Sign up</button>
+                            <button type="button" id="orBtns" class="btn btn-secondary"
+                                onclick="window.location.href='{% url 'tenant_login' %}'">Log in as Tenant</button>
 
                         </div>
                     </div>

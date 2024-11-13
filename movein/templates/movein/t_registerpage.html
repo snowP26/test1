@@ -18,6 +18,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <link rel="stylesheet" href="{% static 'styles/t_registerstyle.css' %}">
+    <link rel="icon" href="{% static 'images/logo-purple.png' %}">
 
 </head>
 
@@ -37,40 +38,13 @@
                 <div class="col-md-5 right">
                     <div class="input-box">
                         <h3>Create an Account</h3>
-                        <div class="row">
-                            <div class="col-6">
-                                <div class="form-floating mb-4">
-                                    <input type="text" class="form-control-sm" id="floatingInput"
-                                        placeholder="First Name">
-                                </div>
-                            </div>
-                            <div class="col-6">
-                                <div class="form-floating mb-4">
-                                    <input type="text" class="form-control-sm" id="floatingInput"
-                                        placeholder="Last Name">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="email" class="form-control-sm" id="floatingInput" placeholder="Email Address">
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="text" class="form-control-sm" id="floatingInput" placeholder="Phone Number">
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control-sm" id="floatingPassword" placeholder="Password">
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="password" class="form-control-sm" id="floatingPassword"
-                                placeholder="Re-enter password">
-                        </div>
-                        <div class="form-floating mb-4">
-                            <input type="text" class="form-control-sm" id="floatingInput"
-                                placeholder="Enter voucher code">
-                            <i>The voucher code will be given by your landlord.</i>
-                        </div>
-
-                        <button type="button" class="btn btn-primary">Register</button>
+                        <!-- Register Form -->
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form.as_p }}
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </form>
+                        <!-- end form -->
                     </div>
                 </div>
             </div>

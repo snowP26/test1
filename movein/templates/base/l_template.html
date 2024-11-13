@@ -71,7 +71,7 @@
                 <div class="vr d-none d-lg-flex h-500 mx-lg-4 text-white"></div>
                 <hr class="d-lg-none text-white-100">
 
-                <a class="icon-link" href="#">
+                <a class="icon-link" href="#" onclick="logoutUser()">
                     <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" style="color: #ffffff;" width="40"
                         height="40" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -97,6 +97,32 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+    <script>
+        function logoutUser() {
+            if (confirm("Are you sure you want to log out?")) {
+                fetch("{% url 'landlord_logout' %}", {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': '{{ csrf_token }}',
+                        'Content-Type': 'application/json'
+                    },
+                })
+                    .then(response => {
+                        if (response.ok) {
+                            // Redirect to the login page after successful logout
+                            window.location.href = "{% url 'landlord_login' %}";
+                        } else {
+                            alert('Logout failed. Please try again.');
+                        }
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('Logout failed. Please try again.');
+                    });
+            }
+        }
+    </script>
+
 </body>
 
 </html>

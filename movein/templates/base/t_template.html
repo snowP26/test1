@@ -50,7 +50,7 @@
                     <li class="nav-item">
                         <a class="nav-link p-3"
                             style="color: {% if active_link == 'reports' %} #F8E71C {% else %} white {% endif %};"
-                            href="{% url 'tenant    _reports' $}">Reports</a>
+                            href="{% url 'tenant_reports' $}">Reports</a>
                     </li>
                 </ul>
 
@@ -66,7 +66,7 @@
                 <div class="vr d-none d-lg-flex h-500 mx-lg-4 text-white"></div>
                 <hr class="d-lg-none text-white-100">
 
-                <a class="icon-link" href="#">
+                <a class="icon-link" href="{% url 'tenant_logout' %}">
                     <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" style="color: #ffffff;" width="40"
                         height="40" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"

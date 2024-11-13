@@ -2,31 +2,45 @@ from django import forms
 from django.contrib.auth.models import User
 from .models import *
 
-class signupForm(forms.Form):
-    password = forms.CharField(widget=forms.PasswordInput, min_length=8)
-    pw_confirm = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
+class announcementForm(forms.ModelForm):
+    class Meta:
+        model = Announcements
+        fields = ['Announce_header', 'Announce_body']  
+        widgets = {
+            'Announce_header': forms.TextInput(attrs={'class': 'form-control w-75 form-control-lg'}),
+            'Announce_body': forms.Textarea(attrs={'class': 'form-control w-100', 'rows': 5}),  
+        }
+
+class ownerRegForm (forms.ModelForm):
+    password = forms.CharField(widget= forms.PasswordInput)
+    password_confirm = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
 
     class Meta:
-        model = Tenant
-        fields = ['Tenant_firstName', 'Tenant_lastName', 'Tenant_Email', 'Tenant_Phone', 'password', 'pw_confirm']
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'phone_number']
+
+    def clean(self):    
+        cleaned_data = super().clean()
+        password = cleaned_data.get('password')
+        password_confirm = cleaned_data.get('password_confirm') 
+
+        if password and password_confirm and password != password_confirm:
+            raise forms.ValidationError("Passwords do not match!")
+        return cleaned_data
+    
+class userRegForm (forms.ModelForm):
+    password = forms.CharField(widget= forms.PasswordInput)
+    password_confirm = forms.CharField(widget=forms.PasswordInput, label="Confirm Password")
+
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name', 'email', 'phone_number']
 
     def clean(self):
         cleaned_data = super().clean()
         password = cleaned_data.get('password')
-        pw_confirm = cleaned_data.get('pw_confirm')
+        password_confirm = cleaned_data.get('password_confirm')
 
-        # Password Validation
-        if password and pw_confirm and password != pw_confirm:
-            raise forms.ValidationError("Passwords do not match")
+        if password and password_confirm and password != password_confirm:
+            raise forms.ValidationError("Passwords do not match!")
         return cleaned_data
-
-
-class announcementForm(forms.ModelForm):
-    class Meta:
-        model = Announcements
-        fields = ['Announce_header', 'Announce_body']  # Adjust fields as needed
-        widgets = {
-            'Announce_header': forms.TextInput(attrs={'class': 'form-control w-75 form-control-lg'}),
-            'Announce_body': forms.Textarea(attrs={'class': 'form-control w-100', 'rows': 5}),  # 100% width and 5 rows
-        }
-
