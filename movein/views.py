@@ -130,15 +130,15 @@ def t_announcement(request):
 
     return render(request, 'movein/t_announcement.html', context)
 
-# @login_required(login_url='tenant/login')
-# def t_report(request):
-#     reports = Reports.objects.order_by('Reports_date')
-#     context = {
-#         'active_link': 'reports',
-#         'reports': reports,
-#     }
+@login_required(login_url='tenant/login')
+def t_report(request):
+    reports = Reports.objects.order_by('Reports_date')
+    context = {
+        'active_link': 'reports',
+        'reports': reports,
+    }
 
-#     return render(request, 'movein/t_reports.html', context)
+    return render(request, 'movein/t_reports.html', context)
 
 def t_login(request):
     error_message = None

@@ -23,7 +23,7 @@ urlpatterns = [
     path('tenant/login', t_login, name="tenant_login"),
     path('tenant/register', t_register, name="tenant_register"),
     path('tenant/logout/', views.tenant_logout, name='tenant_logout'),
-    # path('tenant/reports', t_report, name="tenant_report"),
+    path('tenant/reports', t_report, name="tenant_reports"),
     
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
