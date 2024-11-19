@@ -15,7 +15,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-        <link rel="icon" href="{% static 'images/logo-purple.png' %}">
+    <link rel="icon" href="{% static 'images/logo-purple.png' %}">
     <link rel="stylesheet" href="{% static 'styles/t_loginstyle.css' %}">
 
 </head>
@@ -47,9 +47,9 @@
                                     <input type="password" name="password" class="form-control-sm" id="floatingPassword"
                                         placeholder="Password" required>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Log In</button>
+                                <button id="loginButton" type="submit" class="btn btn-primary">Log In</button>
                             </form>
-                        
+
                             <div class="row mt-1">
                                 <div class="col-5 ps-2">
                                     <hr>
@@ -61,8 +61,10 @@
                                     <hr>
                                 </div>
                             </div>
-                            <button type="button" id="orBtns" class="btn btn-secondary mb-2"  onclick="window.location.href='{% url 'tenant_register' %}'">Sign up</button>
-                            <button type="button" id="orBtns" class="btn btn-secondary"  onclick="window.location.href='{% url 'landlord_login' %}'">Log in as Owner</button>
+                            <button type="button" id="orBtns" class="btn btn-secondary mb-2"
+                                onclick="window.location.href='{% url 'tenant_register' %}'">Sign up</button>
+                            <button type="button" id="orBtns" class="btn btn-secondary"
+                                onclick="window.location.href='{% url 'landlord_login' %}'">Log in as Owner</button>
 
                         </div>
                     </div>
@@ -81,6 +83,55 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+
+    <!-- sweetalert -->
+    <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+
+    <script>
+        // bind sweetalert to login button
+        document.getElementById('loginButton').addEventListener('click', function () {
+            // Get the email and password inputs
+            var email = document.getElementById('floatingInput').value;
+            var password = document.getElementById('floatingPassword').value;
+            
+
+            // form validation
+            if (email === "" || password === "") {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Please fill in both fields!',
+                });
+            } else {
+                // trigger events for the sweetalert (success or loading)
+                Swal.fire({
+                    title: 'Logging In...',
+                    text: 'Please wait while we process your login.',
+                    icon: '',
+                    showCancelButton: false,
+                    showConfirmButton: false,
+                    allowOutsideClick: false,
+                    didOpen: () => {
+                        Swal.showLoading();
+                    }
+                });
+
+                // Simulate login process (you can replace with real backend call)
+                setTimeout(function () {
+                    // Example success response
+                    Swal.fire({
+                        title: 'Logged In!',
+                        text: 'Welcome back, Tenant!',
+                        icon: 'success',
+                        confirmButtonText: 'Continue'
+                    });
+                }, 2000); // Simulate a delay (2 seconds) for login process
+            }
+        });
+    </script>
 </body>
 
 </html>

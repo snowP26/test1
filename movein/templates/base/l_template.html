@@ -18,15 +18,16 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <!--css-->
+    <link rel="stylesheet" href="{% static 'styles/navstyle.css' %}">
     {% block styles %}
-
+        
     {% endblock %}
 
 </head>
 
 <body>
     <!--Navbar-->
-    <nav class="navbar navbar-expand-lg sticky-top p-4" style="background-color: #4e4187">
+    <nav class="navbar navbar-expand-lg sticky-top p-2" style="background-color: #4e4187">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">
                 <img src="{% static 'images/logo-white.png' %}" alt="move-in-logo" width="50" height="50">
@@ -71,7 +72,7 @@
                 <div class="vr d-none d-lg-flex h-500 mx-lg-4 text-white"></div>
                 <hr class="d-lg-none text-white-100">
 
-                <a class="icon-link" href="#" onclick="logoutUser()">
+                <a class="icon-link" href="#" id="logoutButton" onclick="logoutUser()">
                     <svg class="icon-lg" xmlns="http://www.w3.org/2000/svg" style="color: #ffffff;" width="40"
                         height="40" fill="currentColor" class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                         <path fill-rule="evenodd"
@@ -97,30 +98,65 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"
         integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy"
         crossorigin="anonymous"></script>
+    
+    <!-- sweetalert -->
+    <script src="https://unpkg.com/sweetalert2@7.8.2/dist/sweetalert2.all.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <script>
-        function logoutUser() {
-            if (confirm("Are you sure you want to log out?")) {
-                fetch("{% url 'landlord_logout' %}", {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRFToken': '{{ csrf_token }}',
-                        'Content-Type': 'application/json'
-                    },
-                })
-                    .then(response => {
-                        if (response.ok) {
-                            // Redirect to the login page after successful logout
-                            window.location.href = "{% url 'landlord_login' %}";
-                        } else {
-                            alert('Logout failed. Please try again.');
+        document.getElementById('logoutButton').addEventListener('click', function (event) {
+            event.preventDefault(); // Prevent the default link behavior
+
+            // Show SweetAlert confirmation
+            const LogoutSweetAlert = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success btn-sm",
+                    cancelButton: "btn btn-danger btn-sm"
+                },
+                buttonsStyling: false
+            });
+
+            LogoutSweetAlert.fire({
+                title: "Are you sure?",
+                text: "You will be logged out!",
+                icon: "",
+                showCancelButton: true,
+                confirmButtonText: "Yes, log out!",
+                cancelButtonText: "No, cancel!",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    // If confirmed, send the logout POST request
+                    fetch("{% url 'landlord_logout' %}", {
+                        method: 'POST',
+                        headers: {
+                            'X-CSRFToken': '{{ csrf_token }}',
+                            'Content-Type': 'application/json'
                         }
                     })
-                    .catch(error => {
-                        console.error('Error:', error);
-                        alert('Logout failed. Please try again.');
-                    });
-            }
-        }
+                        .then(response => {
+                            if (response.ok) {
+                                // Redirect to the login page after successful logout
+                                window.location.href = "{% url 'landlord_login' %}";
+                            } else {
+                                LogoutSweetAlert.fire({
+                                    title: "Error",
+                                    text: "Logout failed. Please try again.",
+                                    icon: "error"
+                                });
+                            }
+                        })
+                        .catch(error => {
+                            LogoutSweetAlert.fire({
+                                title: "Error",
+                                text: "An error occurred. Please try again.",
+                                icon: "error"
+                            });
+                        });
+                }
+            });
+        });
     </script>
 
 </body>

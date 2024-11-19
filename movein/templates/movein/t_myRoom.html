@@ -5,57 +5,111 @@
 {% load static %}
 
 {% block title %}
-    Rooms
+Rooms
 {% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'styles/navstyle.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/roomstyle.css' %}">
-    <link rel="stylesheet" href="{% static 'styles/myRoomStyle.css' %}">
+<link rel="stylesheet" href="{% static 'styles/roomstyle.css' %}">
+<link rel="stylesheet" href="{% static 'styles/myRoomStyle.css' %}">
 {% endblock %}
 
 {% block content %}
-    <!--Banner-->
-    <section class="main-container">
-        <article class="banner">
-            <div class="container-fluid">
-                <div class="container text-light p-5">
-                    <h1 class="display-4">My Room</h1>
-                    <a href="#" class="btn btn-primary">Contact Landlord</a>
-                </div>
-            </div>
-        </article>
-    </section>
-    <!--end of banner-->
+<!--Banner-->
+<section class="main-container">
+    <article class="banner">
+        <div class="container-fluid">
+            <div class="container text-light p-5">
+                <h1 class="display-4">My Room</h1>
+                <!-- modal button -->
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#ModalButton">
+                    Contact Landlord
+                </button>
 
-    <!--content-->
-    <div class="content">
-        <div class="content container mt-5">
-            <div class="row">
-                <!-- Image Container -->
-                <div class="col-md-6 mb-4">
-                    <div class="image-box">
-                        <!-- Update the image source using Django's static tag -->
-                        <img src="{% static 'images/bedroom-1.png' %}" alt="Room Image" class="img-fluid rounded shadow">
+                <!-- modal config -->
+                <div class="modal fade" id="ModalButton" tabindex="-1" aria-labelledby="ModalButtonLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h1 class="modal-title fs-5" id="ModalButtonLabel">Landlord's Contact Details</h1>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="modal-body-title">Name:</div> Arwina D. Landlord
+                                <br><br>
+                                <div class="modal-body-title">Email address:</div> landlord1234@example.com
+                                <br><br>
+                                <div class="modal-body-title">Contact Number:</div> 0123456789
+                            </div>
+                        </div>
                     </div>
                 </div>
-        
-                <!-- Room Details Container -->
-                <div class="col-md-6">
-                    <div class="room-details p-4">
-                        <h2>Room 1</h2>
-                        <p><strong>Occupied by:</strong> Gavril Mariano</p>
-                        <p><strong>Room Details:</strong></p>
-                        <ul>
-                            <li>38 sqm</li>
-                            <li>Newly-renovated</li>
-                            <li>Semi-furnished</li>
-                            <li>Includes brand new air conditioner & water heater</li>
-                        </ul>
+            </div>
+    </article>
+</section>
+<!--end of banner-->
+
+<!--content-->
+<div class="content">
+    <div class="content container mt-5">
+        <div class="row">
+            <!-- Image Container -->
+            <div class="col-md-6 mb-4">
+                <div class="image-box">
+                    <!-- Update the image source using Django's static tag -->
+                    <img src="{% static 'images/bedroom-1.png' %}" alt="Room Image" class="img-fluid rounded shadow">
+                </div>
+            </div>
+
+            <!-- Room Details Container -->
+            <div class="col-md-6">
+                <div class="room-details p-4">
+                    <h2>Room 1</h2>
+                    <p><strong>Occupied by:</strong> Gavril Mariano</p>
+                    <p><strong>Room Details:</strong></p>
+                    <ul>
+                        <li>38 sqm</li>
+                        <li>Newly-renovated</li>
+                        <li>Semi-furnished</li>
+                        <li>Includes brand new air conditioner & water heater</li>
+                    </ul>
+
+                    <button class="btn btn-primary" id="payment-button" type="button" data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">View Payment</button>
+
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight"
+                        aria-labelledby="offcanvasRightLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasRightLabel">Statement</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"
+                                aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <div class="text-title">Overdue:</div>
+                            <p>N/A</p>
+
+                            <br><br>
+
+                            <div class="text-title">Paid:</div>
+                            <p>₱2,000.00</p>
+
+                            <br><br>
+
+                            <div class="text-title">To be paid:</div>
+                            <p>TBA</p>
+
+                            <br><br><br>
+
+                            <p id="comment"><i>Contact your landlord for inquiries...</i></p>
+
+                            <img id="gif" src="{% static 'images/pay.gif' %}" alt="pay-gif">
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <!--end of content-->
+</div>
+<!--end of content-->
 {% endblock %}
