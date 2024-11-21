@@ -10,7 +10,7 @@ pillow = "*"
 ipython = "*"
 dj-database-url = "*"
 whitenoise = "*"
-psycopg2-binary = "*"
+psycopg2 = "*"
 
 [dev-packages]
 

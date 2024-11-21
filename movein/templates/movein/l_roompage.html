@@ -9,48 +9,80 @@ Additionally, the landlord can access tenant information for each room. -->
 {% block title %}Rooms{% endblock %}
 
 {% block styles %}
-    <link rel="stylesheet" href="{% static 'styles/roomstyle.css' %}">
+<link rel="stylesheet" href="{% static 'styles/roomstyle.css' %}">
 {% endblock %}
 
 {% block content %}
-    <!--Banner-->
-    <section class="main-container">
-        <article class="banner">
-            <div class="container-fluid">
-                <div class="container text-light p-5">
-                    <h1 class="display-4">Rooms</h1>
-                    <ul class="nav justify-content-center">
-                        <li class="nav-item">
-                            <a class="nav-link active fw-bold" aria-current="page" href="#"
-                                style="color: #F8E71C;">All</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: #7E7979">Vacant</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#" style="color: #7E7979">Occupied</a>
-                        </li>
-                    </ul>
-                    <a href="#" class="btn btn-primary">Add a Room</a>
-                </div>
-            </div>
-        </article>
-    </section>
-    <!--end of banner-->
+<!--Banner-->
+<section class="main-container">
+    <article class="banner">
+        <div class="container-fluid">
+            <div class="container text-light p-5">
+                <h1 class="display-4">Rooms</h1>
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active fw-bold" aria-current="page" href="#" style="color: #F8E71C;">All</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: #7E7979">Vacant</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" style="color: #7E7979">Occupied</a>
+                    </li>
+                </ul>
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                    data-bs-whatever="@room">Add a Room</button>
 
-    <!--content-->
-    <div class="content">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-2 mb-3 d-flex justify-content-center">
-                <div class="room-container p-3 text-light">
-                    <h1 class="display-5">Room 1</h1>
-                    <p>G. Mariano</p>
+                <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="background-color: #F7EDE1;">
+                                <div class="modal-header" style="background-color: #4E4187;">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add a Room</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <div class="input-group mb-3">
+                                        <input type="file" class="form-control" id="attachImageGroup">
+                                        <label class="input-group-text" for="attachImageGroup">Upload</label>
+                                    </div>
+                                    <form>
+                                        <div class="mb-3">
+                                            <label for="room-details" class="d-block" style="color: black;">Room Details:</label>
+                                            <textarea class="form-control" id="room-details"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save Changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="col-12 col-md-8 image-container">
-                <img src="{% static 'images/bedroom-1.png' %}" class="img-fluid" alt="sample">
             </div>
         </div>
+    </article>
+</section>
+<!--end of banner-->
+
+<!--content-->
+<div class="content">
+    <div class="row justify-content-center">
+        <div class="col-12 col-md-2 mb-3 d-flex justify-content-center">
+            <div class="room-container p-3 text-light">
+                <h1 class="display-5">Room 1</h1>
+                <p>G. Mariano</p>
+            </div>
+        </div>
+        <div class="col-12 col-md-8 image-container">
+            <img src="{% static 'images/bedroom-1.png' %}" class="img-fluid" alt="sample">
+        </div>
     </div>
-    <!--end of content-->
+</div>
+<!--end of content-->
 {% endblock %}

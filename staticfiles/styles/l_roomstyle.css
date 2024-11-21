@@ -1,0 +1,62 @@
+* {
+    font-family: 'Helvetica Neue LT STD', 'Rubik', sans-serif;
+}
+
+.display-4 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 675;
+}
+
+body {
+    background-color: #F7EDE1;
+}
+
+.content {
+    padding: 30px;
+}   
+
+.room-container {
+max-height: 135px;
+background-color: #5C1A1B;
+border-radius: 15px;
+width: 250px;
+}
+
+.image-container {
+    margin-left: 10px;
+}
+
+@media (max-width: 576px) {
+    .display-5 {
+        font-size: 1.5rem;
+        text-align: center;
+    }
+    p {
+        text-align: center;
+    }
+    .icon-lg {
+        margin: 15px;
+    }
+}
+
+@media (max-width: 990px) {
+    .display-5 {
+        font-size: 1.0rem; 
+        text-align: center;
+    }
+    p {
+        text-align: center;
+    }
+    .icon-lg {
+        margin: 15px;
+    }
+}
+@media (max-width: 1273px) {
+    .display-5 {
+        font-size: 2rem; 
+        text-align: center;
+    }
+    p {
+        text-align: center;
+    }
+}
