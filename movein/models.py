@@ -15,7 +15,6 @@ class User(AbstractUser):
     first_name = models.CharField(max_length=60)
     last_name = models.CharField(max_length=60)
     email = models.EmailField(unique=True)
-    phone_number = models.CharField(max_length=11, blank=True, null=True)
 
     def save(self, *args, **kwargs):
         if not self.pk and not self.role:
@@ -25,6 +24,7 @@ class User(AbstractUser):
     class Meta:
         verbose_name = 'User'
         verbose_name_plural = 'Users'
+        db_table = 'movein_user'
 
 
 # UUID Creation for Property model

@@ -17,7 +17,7 @@ class ownerRegForm (forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'phone_number']
+        fields = ['first_name', 'last_name', 'email']
 
     def clean(self):    
         cleaned_data = super().clean()
@@ -34,7 +34,7 @@ class userRegForm (forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ['first_name', 'last_name', 'email', 'phone_number']
+        fields = ['first_name', 'last_name', 'email']
 
     def clean(self):
         cleaned_data = super().clean()
