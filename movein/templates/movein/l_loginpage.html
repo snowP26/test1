@@ -91,13 +91,15 @@
     <script src="https://smtpjs.com/v3/smtp.js"></script>
 
     <script>
-        // bind sweetalert to login button
-        document.getElementById('loginButton').addEventListener('click', function() {
+        document.getElementById('loginButton').addEventListener('click', function(event) {
+            // Prevent form submission
+            event.preventDefault();
+    
             // Get the email and password inputs
             var email = document.getElementById('floatingInput').value;
             var password = document.getElementById('floatingPassword').value;
-
-            // form validation
+    
+            // Form validation
             if (email === "" || password === "") {
                 Swal.fire({
                     icon: 'error',
@@ -105,7 +107,6 @@
                     text: 'Please fill in both fields!',
                 });
             } else {
-                // trigger events for the sweetalert (success or loading)
                 Swal.fire({
                     title: 'Logging In...',
                     text: 'Please wait while we process your login.',
@@ -117,17 +118,43 @@
                         Swal.showLoading();
                     }
                 });
-
-                // Simulate login process (you can replace with real backend call)
-                setTimeout(function() {
-                    // Example success response
+                
+                fetch("{% url 'landlord_login' %}", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                        "X-CSRFToken": "{{ csrf_token }}"
+                    },
+                    body: new URLSearchParams({
+                        email: email,
+                        password: password
+                    })
+                })
+                .then(response => {
+                    if (response.ok) {
+                        Swal.fire({
+                            title: 'Logged In!',
+                            text: 'Welcome back, Landlord!',
+                            icon: 'success',
+                            confirmButtonText: 'Continue'
+                        }).then(() => {
+                            window.location.href = "{% url 'landlord_room' %}";
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Login Failed',
+                            text: 'Invalid email or password. Please try again.',
+                        });
+                    }
+                })
+                .catch(error => {
                     Swal.fire({
-                        title: 'Logged In!',
-                        text: 'Welcome back, Landlord!',
-                        icon: 'success',
-                        confirmButtonText: 'Continue'
+                        icon: 'error',
+                        title: 'Error',
+                        text: 'An error occurred while logging in. Please try again later.',
                     });
-                }, 2000); // Simulate a delay (2 seconds) for login process
+                });
             }
         });
     </script>
