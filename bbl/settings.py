@@ -17,7 +17,8 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DATABASE_URL = "postgresql://postgres:YFesNEIRzoDKBUCVTEJaCbDpAULpIeRn@autorack.proxy.rlwy.net:34975/railway"
+DATABASE_URL = "postgres://postgres.mlpchqceqqphfcdkwfso:jWESiUxWJJACwImJ@aws-0-ap-southeast-1.pooler.supabase.com:6543/postgres?sslmode=require"
+
 
 
 
